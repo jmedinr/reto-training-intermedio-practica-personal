@@ -25,8 +25,8 @@
             type="text"
             formControlName="email"
             pInputText
+            placeholder="Correo"
           />
-          <label for="float-input">Correo</label>
         </span>
 
         <span class="p-float-label" style="margin: 20px; margin-top: 30px">
@@ -35,8 +35,8 @@
             type="password"
             formControlName="password"
             pInputText
+            placeholder="Contraseña"
           />
-          <label for="float-input">Contraseña</label>
         </span>
 
         <button
@@ -64,6 +64,18 @@
         style="margin-bottom: 10px"
       ></button>
 
+        <br />
+        <p>¿Se te olvidó la contraseña?
+          <button
+          (click)="showModalDialog()"
+          pButton
+          pRipple
+          type="button"
+          label="Recuperar contraseña"
+          class="p-button-outlined p-button-secondary"
+          style="margin-bottom: 10px"
+        ></button>
+        </p>
         <br />
         <p>Aun no tienes cuenta? <a href="/registro">Registrate</a></p>
       </form>
