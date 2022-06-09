@@ -31,18 +31,11 @@ export class PreguntasComponent implements OnInit {
   }
 
   getQuestions(): void {
-    this.userLogged.subscribe(value =>{
-        this.uid=value?.uid
-    });
-    this.service.getPage(this.page).subscribe((data) => {
+      this.service.getQuestion().subscribe((data) => {
         this.questions = data;
-    });
-    this.service
-      .getTotalPages()
-      .subscribe((data) => (this.pages = new Array(data)));
-    this.service
-      .getCountQuestions()
-      .subscribe((data) => (this.totalQuestions = data));
+        this.totalQuestions = data.length;
+        this.pages = new Array(Math.ceil(this.totalQuestions / 10))
+      });    
   }
 
   isLast(): boolean {
