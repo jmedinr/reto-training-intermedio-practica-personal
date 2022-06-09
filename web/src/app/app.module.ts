@@ -23,6 +23,7 @@ import { RequestionComponent } from './paginas/requestion/requestion.component';
 import { EditComponent } from './paginas/edit/edit.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { NavbarOutComponent } from './navbar-out/navbar-out.component';
 
 
 
@@ -36,7 +37,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     AnswerComponent,
     QuestionComponent,
     RequestionComponent,
-    EditComponent
+    EditComponent,
+    NavbarOutComponent
 
   ],
   imports: [
