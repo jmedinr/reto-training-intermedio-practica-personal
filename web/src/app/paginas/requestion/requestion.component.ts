@@ -10,14 +10,14 @@ import { QuestionService } from 'src/app/Service/question.service';
   styleUrls: ['./requestion.component.css']
 })
 export class RequestionComponent implements OnInit {
-  
+
   question:QuestionI | undefined;
   answers: AnswerI[] | undefined;
   answersNew: AnswerI[]=[];
   currentAnswer:number=0;
 
   questions: QuestionI[] | undefined;
- 
+
   page: number = 0;
 
   constructor(
@@ -33,22 +33,22 @@ export class RequestionComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.getQuestions(`${id}`);
+    this.getQuestions();
     this.get2();
-    
+
   }
-  
+
   get2(){
     let id = this.route.snapshot.paramMap.get('id');
-    
 
-    this.service.getAnswer(id).subscribe((data) => {  
+
+    this.service.getAnswer(id).subscribe((data) => {
           this.answers = data.answers;
     });
   }
 
-  getQuestions(id:string):void{
-    this.questionService.getQuestion(id).subscribe(data=>{
+  getQuestions():void{
+    this.questionService.getQuestion().subscribe(data=>{
       this.question=data;
       this.answers = data.answers;
     })
