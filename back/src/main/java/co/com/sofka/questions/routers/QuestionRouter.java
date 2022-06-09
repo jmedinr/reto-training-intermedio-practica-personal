@@ -17,7 +17,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.server.RequestPredicates;
 import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
@@ -30,72 +32,155 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class QuestionRouter {
 
     @Bean
-    public RouterFunction<ServerResponse> getAll(ListUseCase listUseCase) {
-        return route(GET("/getAll"),
-                request -> ServerResponse.ok()
+    @RouterOperations(
+            {
+                    @RouterOperation(path = "/getAll", produces = {MediaType.APPLICATION_JSON_VALUE},
+                            method = RequestMethod.GET,
+                            beanClass = ListUseCase.class,
+                            beanMethod = "get",
+                            operation = @Operation(operationId = "getAllQuestions",
+                                    responses = {
+                                            @ApiResponse(responseCode = "200", description = "OK",
+                                                    content = @Content(schema = @Schema(implementation = QuestionDTO.class))),
+                                            @ApiResponse(responseCode = "500", description = "Internal Server Error"),
+                                            @ApiResponse(responseCode = "400", description = "Bad Request"),
+                                            @ApiResponse(responseCode = "404", description = "Not Found")},
+                                    parameters = {
+                                            @Parameter(in = ParameterIn.PATH, name = "userId", description = "User Id")}
+                            )),
+                    @RouterOperation(path = "/getOwnerAll/{userId}",
+                            produces = {MediaType.APPLICATION_JSON_VALUE},
+                            method = RequestMethod.GET,
+                            beanClass = OwnerListUseCase.class,
+                            beanMethod = "apply",
+                            operation = @Operation(operationId = "getOwnerQuestions",
+                                    responses = {
+                                            @ApiResponse(responseCode = "200", description = "OK",
+                                                    content = @Content(schema = @Schema(implementation = QuestionDTO.class))),
+                                            @ApiResponse(responseCode = "500", description = "Internal Server Error"),
+                                            @ApiResponse(responseCode = "400", description = "Bad Request"),
+                                            @ApiResponse(responseCode = "404", description = "Not Found")},
+                                    parameters = {
+                                            @Parameter(in = ParameterIn.PATH, name = "userId", description = "User Id")})
+                    ),
+                    @RouterOperation(path = "/create",
+                            produces = {MediaType.APPLICATION_JSON_VALUE},
+                            method = RequestMethod.POST,
+                            beanClass = CreateUseCase.class,
+                            beanMethod = "apply",
+                            operation = @Operation(operationId = "createQuestion",
+                                    responses = {
+                                            @ApiResponse(responseCode = "200", description = "OK",
+                                                    content = @Content(schema = @Schema(implementation = QuestionDTO.class))),
+                                            @ApiResponse(responseCode = "500", description = "Internal Server Error"),
+                                            @ApiResponse(responseCode = "400", description = "Bad Request"),
+                                            @ApiResponse(responseCode = "404", description = "Not Found")})
+                    ),
+                    @RouterOperation(path = "/update",
+                            produces = {MediaType.APPLICATION_JSON_VALUE},
+                            method = RequestMethod.PUT,
+                            beanClass = UpdateUseCase.class,
+                            beanMethod = "apply",
+                            operation = @Operation(operationId = "updateQuestion",
+                                    responses = {
+                                            @ApiResponse(responseCode = "200", description = "OK",
+                                                    content = @Content(schema = @Schema(implementation = QuestionDTO.class))),
+                                            @ApiResponse(responseCode = "500", description = "Internal Server Error"),
+                                            @ApiResponse(responseCode = "400", description = "Bad Request"),
+                                            @ApiResponse(responseCode = "404", description = "Not Found")})
+                    ),
+                    @RouterOperation(path = "/delete/{questionId}",
+                            produces = {MediaType.APPLICATION_JSON_VALUE},
+                            method = RequestMethod.DELETE,
+                            beanClass = DeleteUseCase.class,
+                            beanMethod = "apply",
+                            operation = @Operation(operationId = "deleteQuestion",
+                                    responses = {
+                                            @ApiResponse(responseCode = "200", description = "OK",
+                                                    content = @Content(schema = @Schema(implementation = QuestionDTO.class))),
+                                            @ApiResponse(responseCode = "500", description = "Internal Server Error"),
+                                            @ApiResponse(responseCode = "400", description = "Bad Request"),
+                                            @ApiResponse(responseCode = "404", description = "Not Found")})
+                    ),
+                    @RouterOperation(path = "/get/{questionId}",
+                            produces = {MediaType.APPLICATION_JSON_VALUE},
+                            method = RequestMethod.GET,
+                            beanClass = GetUseCase.class,
+                            beanMethod = "apply",
+                            operation = @Operation(operationId = "getQuestion",
+                                    responses = {
+                                            @ApiResponse(responseCode = "200", description = "OK",
+                                                    content = @Content(schema = @Schema(implementation = QuestionDTO.class))),
+                                            @ApiResponse(responseCode = "500", description = "Internal Server Error"),
+                                            @ApiResponse(responseCode = "400", description = "Bad Request"),
+                                            @ApiResponse(responseCode = "404", description = "Not Found")},
+                                    parameters = {
+                                            @Parameter(in = ParameterIn.PATH, name = "questionId", description = "Question Id")})
+                    ),
+                    @RouterOperation(path = "add",
+                            produces = {MediaType.APPLICATION_JSON_VALUE},
+                            method = RequestMethod.POST,
+                            beanClass = AddAnswerUseCase.class,
+                            beanMethod = "apply",
+                            operation = @Operation(operationId = "addAnswer",
+                                    responses = {
+                                            @ApiResponse(responseCode = "200", description = "OK",
+                                                    content = @Content(schema = @Schema(implementation = QuestionDTO.class))),
+                                            @ApiResponse(responseCode = "500", description = "Internal Server Error"),
+                                            @ApiResponse(responseCode = "400", description = "Bad Request"),
+                                            @ApiResponse(responseCode = "404", description = "Not Found")},
+                                    parameters = {
+                                            @Parameter(in = ParameterIn.PATH, name = "questionId", description = "Question Id"),
+                                            @Parameter(in = ParameterIn.PATH, name = "answerId", description = "Answer Id")})
+                    )
+            }
+
+    )
+
+    RouterFunction<ServerResponse> routerFunctionQuestionsAndAnswers(ListUseCase listUseCase, AddAnswerUseCase addAnswerUseCase, GetUseCase getUseCase, CreateUseCase createUseCase, DeleteUseCase deleteUseCase,
+                                                                     OwnerListUseCase ownerListUseCase, UpdateUseCase updateUseCase) {
+        return RouterFunctions
+                .route(RequestPredicates.GET("/getAll"), request -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromPublisher(listUseCase.get(), QuestionDTO.class))
-        );
-    }
-
-    @Bean
-    public RouterFunction<ServerResponse> getOwnerAll(OwnerListUseCase ownerListUseCase) {
-        return route(
-                GET("/getOwnerAll/{userId}"),
-                request -> ServerResponse.ok()
+                )
+                .andRoute(RequestPredicates.GET("/getOwnerAll/{userId}"), request -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
-                        .body(BodyInserters.fromPublisher(
-                                ownerListUseCase.apply(request.pathVariable("userId")),
-                                QuestionDTO.class
-                        ))
-        );
-    }
-
-    @Bean
-    public RouterFunction<ServerResponse> create(CreateUseCase createUseCase) {
-        Function<QuestionDTO, Mono<ServerResponse>> executor = questionDTO -> createUseCase.apply(questionDTO)
-                .flatMap(result -> ServerResponse.ok()
-                        .contentType(MediaType.TEXT_PLAIN)
-                        .bodyValue(result));
-
-        return route(
-                POST("/create").and(accept(MediaType.APPLICATION_JSON)),
-                request -> request.bodyToMono(QuestionDTO.class).flatMap(executor)
-        );
-    }
-
-    @Bean
-    public RouterFunction<ServerResponse> get(GetUseCase getUseCase) {
-        return route(
-                GET("/get/{id}").and(accept(MediaType.APPLICATION_JSON)),
-                request -> ServerResponse.ok()
+                        .body(BodyInserters.fromPublisher(ownerListUseCase.apply(request.pathVariable("id")), QuestionDTO.class))
+                )
+                .andRoute(RequestPredicates.POST("/create").and(accept(MediaType.APPLICATION_JSON)),
+                        request -> request.bodyToMono(QuestionDTO.class).flatMap(
+                                questionDTO -> createUseCase.apply(questionDTO)
+                                        .flatMap(result -> ServerResponse.ok()
+                                                .contentType(MediaType.TEXT_PLAIN)
+                                                .bodyValue(result))
+                        )
+                )
+                .andRoute(RequestPredicates.GET("/get/{id}").and(accept(MediaType.APPLICATION_JSON)), request -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromPublisher(getUseCase.apply(
                                         request.pathVariable("id")),
                                 QuestionDTO.class
                         ))
-        );
-    }
-
-    @Bean
-    public RouterFunction<ServerResponse> addAnswer(AddAnswerUseCase addAnswerUseCase) {
-        return route(POST("/add").and(accept(MediaType.APPLICATION_JSON)),
-                request -> request.bodyToMono(AnswerDTO.class)
+                )
+                .andRoute(RequestPredicates.POST("/add").and(accept(MediaType.APPLICATION_JSON)), request -> request.bodyToMono(AnswerDTO.class)
                         .flatMap(addAnswerDTO -> addAnswerUseCase.apply(addAnswerDTO)
                                 .flatMap(result -> ServerResponse.ok()
                                         .contentType(MediaType.APPLICATION_JSON)
                                         .bodyValue(result))
                         )
-        );
-    }
-
-    @Bean
-    public RouterFunction<ServerResponse> delete(DeleteUseCase deleteUseCase) {
-        return route(
-                DELETE("/delete/{id}").and(accept(MediaType.APPLICATION_JSON)),
-                request -> ServerResponse.accepted()
+                )
+                .andRoute(RequestPredicates.DELETE("/delete/{id}").and(accept(MediaType.APPLICATION_JSON)),  request -> ServerResponse.accepted()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromPublisher(deleteUseCase.apply(request.pathVariable("id")), Void.class))
-        );
+                )
+                .andRoute(RequestPredicates.PUT("/update").and(accept(MediaType.APPLICATION_JSON)), request -> request.bodyToMono(QuestionDTO.class)
+                        .flatMap(updateQuestionDTO -> updateUseCase.apply(updateQuestionDTO)
+                                .flatMap(result -> ServerResponse.ok()
+                                        .contentType(MediaType.APPLICATION_JSON)
+                                        .bodyValue(result))
+                        )
+                );
+
     }
 }
