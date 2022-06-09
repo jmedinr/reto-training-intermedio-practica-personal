@@ -6,12 +6,14 @@ import { RequestionComponent } from './paginas/requestion/requestion.component';
 import { LoginComponent } from './persona/login/login.component';
 import { PreguntasComponent } from './persona/preguntas/preguntas.component';
 import { RegistroComponent } from './persona/registro/registro.component';
+import { RecuperarPasswordComponent } from './persona/recuperar-password/recuperar-password.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'preguntas', component: PreguntasComponent},
   { path: 'registro', component: RegistroComponent},
   { path: 'answer', component: AnswerComponent},
+  { path: 'app-recuperar-password', component: RecuperarPasswordComponent},
   {path: 'question/:id', component: RequestionComponent},
   {path: '**', pathMatch: 'full', redirectTo:'preguntas'}
 ];
