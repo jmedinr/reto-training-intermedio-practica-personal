@@ -23,8 +23,6 @@ import { RequestionComponent } from './paginas/requestion/requestion.component';
 import { EditComponent } from './paginas/edit/edit.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
-import { RecuperarPasswordComponent } from './persona/recuperar-password/recuperar-password.component';
-=======
 import { NavbarOutComponent } from './navbar-out/navbar-out.component';
 
 
@@ -40,8 +38,6 @@ import { NavbarOutComponent } from './navbar-out/navbar-out.component';
     QuestionComponent,
     RequestionComponent,
     EditComponent,
-    RecuperarPasswordComponent
-=======
     NavbarOutComponent
 
   ],

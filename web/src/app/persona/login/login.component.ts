@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           this.route.navigate(['preguntas']);
         }
 
-        //this.mostrar = !this.mostrar;
+        this.mostrar = !this.mostrar;
       });
   }
   ingresarGoogle() {
@@ -72,14 +72,12 @@ export class LoginComponent implements OnInit {
           setTimeout(() => {
             this.route.navigate(['preguntas']);
           }, 3000);
-
         } else {
           this.messageService.add({
             severity: 'error',
             summary: 'Rectifique los datos',
             detail: 'Clave o Usuario incorrecto, Intente de Nuevo',
           });
-
         }
         this.mostrar = !this.mostrar;
       });
@@ -107,8 +105,13 @@ export class LoginComponent implements OnInit {
       detail: 'Message Content',
     });
   }
-  showError() {}
-
+  showError() {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: 'Error al enviar el correo',
+    });
+  }
   spinner() {
     this.mostrar = !this.mostrar;
   }
@@ -118,7 +121,6 @@ export class LoginComponent implements OnInit {
   }
 
   recuperarEmail() {
-    try {
       this.mostrar2 = !this.mostrar2;
       this.authService.resetPassword(this.form2.value.email).then((res) => {
         this.displayModal = false;
@@ -127,8 +129,10 @@ export class LoginComponent implements OnInit {
           summary: '!Exitoso¡',
           detail: 'Revisa tu bandeja de entrada',
         });
-      });
-      this.mostrar2 = !this.mostrar2;
-    } catch (error) {}
+      }).catch(() => {
+        this.displayModal = false;
+        this.showError();
+        this.mostrar2 = !this.mostrar2;
+    });
   }
 }
