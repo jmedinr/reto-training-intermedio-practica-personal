@@ -14,7 +14,7 @@ export class PreguntasComponent implements OnInit {
 
   totalQuestions: number = 0;
 
-  questions: QuestionI[] | undefined;
+  questions: any | undefined;
   user: any = '';
   page: number = 0;
   pages: Array<number> | undefined;
@@ -35,7 +35,7 @@ export class PreguntasComponent implements OnInit {
         this.questions = data;
         this.totalQuestions = data.length;
         this.pages = new Array(Math.ceil(this.totalQuestions / 10))
-      });    
+      });
   }
 
   isLast(): boolean {

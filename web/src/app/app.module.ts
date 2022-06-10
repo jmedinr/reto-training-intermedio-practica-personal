@@ -24,6 +24,9 @@ import { EditComponent } from './paginas/edit/edit.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { NavbarOutComponent } from './navbar-out/navbar-out.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
 
 
 
@@ -51,6 +54,7 @@ import { NavbarOutComponent } from './navbar-out/navbar-out.component';
     HttpClientModule,
     NgbModule,
     FormsModule,
+    NgxPaginationModule,
     ToastrModule.forRoot(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth())

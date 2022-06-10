@@ -20,7 +20,7 @@
   </div>
 </div>
 <div class="container">
-  <div class="question" *ngFor="let question of questions">
+  <div class="question" *ngFor="let question of questions | paginate: { itemsPerPage: 8, currentPage: page }">
     <div class="card mb-3 h-200">
       <div class="row g-0">
         <div class="col-md-3">
@@ -76,6 +76,8 @@
   </div>
 </div>
 
+<pagination-controls (pageChange)="page = $event"></pagination-controls>
+
 <div class="">
   <ul class="pagination justify-content-center">
     <li class="page-item">
@@ -83,9 +85,7 @@
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li class="page-item" *ngFor="let page of pages; let i = index">
-      <a class="page-link" (click)="getPage(i)">{{ i + 1 }}</a>
-    </li>
+
     <li class="page-item">
       <a class="page-link" (click)="nextPage()" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
