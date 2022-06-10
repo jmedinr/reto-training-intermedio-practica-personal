@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           this.route.navigate(['preguntas']);
         }
 
-        this.mostrar = !this.mostrar;
+        //this.mostrar = !this.mostrar;
       });
   }
   ingresarGoogle() {
@@ -108,6 +108,7 @@ export class LoginComponent implements OnInit {
     });
   }
   showError() {}
+
   spinner() {
     this.mostrar = !this.mostrar;
   }

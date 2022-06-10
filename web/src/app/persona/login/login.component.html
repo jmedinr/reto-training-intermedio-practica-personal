@@ -54,6 +54,59 @@
         <div>
 
         </div>
+=======
+    <div class="card-body" style="margin: 20px">
+      <h5>Ingreso con correo personal</h5>
+      <form [formGroup]="form">
+        <span class="p-float-label" style="margin: 20px">
+          <input
+            id="float-input"
+            type="text"
+            formControlName="email"
+            pInputText
+            placeholder="Correo"
+          />
+        </span>
+
+        <span class="p-float-label" style="margin: 20px; margin-top: 30px">
+          <input
+            id="float-input"
+            type="password"
+            formControlName="password"
+            pInputText
+            placeholder="Contraseña"
+          />
+        </span>
+
+        <button
+        [disabled]="form.invalid"
+        (click)="ingresar()"
+        pButton
+        pRipple
+        type="button"
+        label="Iniciar"
+        class="p-button-outlined p-button-secondary"
+        style="margin-bottom: 10px"
+      ></button>
+
+        <br />
+
+        <h5>Ingreso con Google</h5>
+
+        <button
+        (click)="ingresarGoogle()"
+        pButton
+        pRipple
+        type="button"
+        label="Login con Google"
+        class="btn btn-social-icon btn-google"
+        style="margin-bottom: 10px"
+      ></button>
+
+ 
+        <br />
+        <p>Aun no tienes cuenta? <a href="/registro">Registrate</a></p>
+      </form>
     </div>
 
 
