@@ -123,6 +123,7 @@ export class LoginComponent implements OnInit {
   recuperarEmail() {
       this.mostrar2 = !this.mostrar2;
       this.authService.resetPassword(this.form2.value.email).then((res) => {
+        
         this.displayModal = false;
         this.messageService.add({
           severity: 'success',

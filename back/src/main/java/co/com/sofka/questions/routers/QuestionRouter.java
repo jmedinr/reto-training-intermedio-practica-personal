@@ -125,7 +125,7 @@ public class QuestionRouter {
                             operation = @Operation(operationId = "addAnswer",
                                     responses = {
                                             @ApiResponse(responseCode = "200", description = "OK",
-                                                    content = @Content(schema = @Schema(implementation = QuestionDTO.class))),
+                                                    content = @Content(schema = @Schema(implementation = AnswerDTO.class))),
                                             @ApiResponse(responseCode = "500", description = "Internal Server Error"),
                                             @ApiResponse(responseCode = "400", description = "Bad Request"),
                                             @ApiResponse(responseCode = "404", description = "Not Found")},

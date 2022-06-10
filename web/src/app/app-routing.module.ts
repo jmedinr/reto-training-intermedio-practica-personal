@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent},
   { path: 'answer', component: AnswerComponent},
   {path: 'question/:id', component: RequestionComponent},
+  //{path: 'verification-email ', component: RequestionComponent},
   {path: '**', pathMatch: 'full', redirectTo:'preguntas'}
 ];
 
