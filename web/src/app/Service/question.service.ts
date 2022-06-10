@@ -21,6 +21,7 @@ export class QuestionService {
   getPage(page: number): Observable<QuestionI[]> {
     let direction = this.url + 'pagination/' + page;
     return this.http.get<QuestionI[]>(direction);
+    
   }
 
   getAnswer(id: any): Observable<QuestionI> {
