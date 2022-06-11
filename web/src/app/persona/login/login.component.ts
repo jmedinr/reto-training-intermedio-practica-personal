@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.mostrar = !this.mostrar;
     this.authService
       .login(this.form.value.email, this.form.value.password)
-      .then((res) => {       
+      .then((res) => {
         if (res == undefined) {
           this.messageService.add({
             severity: 'error',
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
       });
   }
   ingresarGoogle() {
-    this.mostrar = !this.mostrar;       
+    this.mostrar = !this.mostrar;
     this.authService
       .loginGoogle(this.form.value.email, this.form.value.password)
       .then((res) => {
@@ -79,16 +79,16 @@ export class LoginComponent implements OnInit {
             summary: 'Rectifique los datos',
             detail: 'Clave o Usuario incorrecto, Intente de Nuevo',
           });
-          
+
         }
         this.mostrar = !this.mostrar;
       });
   }
   getUserLogged() {
-    this.authService.getUserLogged().subscribe((res) => {     
+    this.authService.getUserLogged().subscribe((res) => {
     });
   }
- 
+
   preguntasHome() {
     this.route.navigate(['preguntas']);
   }
@@ -118,17 +118,19 @@ export class LoginComponent implements OnInit {
   }
 
   recuperarEmail() {
-    try {
-      this.mostrar2 = !this.mostrar2;
-      this.authService.resetPassword(this.form2.value.email).then((res) => {
-        this.displayModal = false;
-        this.messageService.add({
-          severity: 'success',
-          summary: '!Exitoso¡',
-          detail: 'Revisa tu bandeja de entrada',
-        });
+    this.mostrar2 = !this.mostrar2;
+    this.authService.resetPassword(this.form2.value.email).then((res) => {
+
+      this.displayModal = false;
+      this.messageService.add({
+        severity: 'success',
+        summary: '!Exitoso¡',
+        detail: 'Revisa tu bandeja de entrada',
       });
+    }).catch(() => {
+      this.displayModal = false;
+      this.showError();
       this.mostrar2 = !this.mostrar2;
-    } catch (error) {}
-  }
+  });
+}
 }
