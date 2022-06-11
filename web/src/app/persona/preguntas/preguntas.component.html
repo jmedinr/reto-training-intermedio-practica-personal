@@ -1,4 +1,4 @@
-<app-navbar-out></app-navbar-out>
+<app-navbar></app-navbar>
 
 <div class="summary-questions container-lg">
   <div>
@@ -20,7 +20,9 @@
   </div>
 </div>
 <div class="container">
-  <div class="question" *ngFor="let question of questions | paginate: { itemsPerPage: 8, currentPage: page }">
+
+  <div class="question" *ngFor="let question of questions | paginate: { itemsPerPage: 10, currentPage: page }">
+
     <div class="card mb-3 h-200">
       <div class="row g-0">
         <div class="col-md-3">
@@ -61,8 +63,13 @@
               <div style="text-align: center;">
                 <app-edit [idanswer]="question"></app-edit>
               </div>
+
+
+
             </div>
           </div>
+
+
             <p class="card-text font1">{{ question.question }}</p>
             <p class="card-text font1">
               <small class="text-muted"
@@ -76,20 +83,26 @@
   </div>
 </div>
 
-<pagination-controls (pageChange)="page = $event"></pagination-controls>
-
+<div style="text-align: center" >
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
 <div class="">
+
   <ul class="pagination justify-content-center">
     <li class="page-item">
       <a class="page-link" (click)="previousPage()" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-
+    <li class="page-item" *ngFor="let page of pages; let i = index">
+      <a class="page-link" (click)="getPage(i)">{{ i + 1 }}</a>
+    </li>
     <li class="page-item">
       <a class="page-link" (click)="nextPage()" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
   </ul>
+
+
 </div>

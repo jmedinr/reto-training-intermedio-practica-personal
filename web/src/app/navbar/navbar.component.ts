@@ -18,11 +18,11 @@ export class NavbarComponent implements OnInit {
   }
 
   traerdatos() {
-    this.userLogged.subscribe((value) => {
+    this.userLogged.subscribe((value) => {    
       if (value?.email == undefined) {
-        this.disabled = true;
+        this.disabled = true;        
       } else {
-        this.disabled = false;
+        this.disabled = false;       
       }
     });
   }
@@ -30,4 +30,6 @@ export class NavbarComponent implements OnInit {
   login() {
     this.route.navigate(['login']);
   }
+
+  
 }

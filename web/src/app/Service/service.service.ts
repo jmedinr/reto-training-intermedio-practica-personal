@@ -34,18 +34,18 @@ export class ServiceService {
   async login(email: string, password: string) {
     try {
       return await this.afauth
-        .signInWithEmailAndPassword(email, password)
-
+        .signInWithEmailAndPassword(email, password)      
+        
     } catch (error) {
-      return alert("Error al iniciar sesión");
+      return null;
     }
   }
   async loginRegistre(email: string, password: string) {
     try {
       return await this.afauth
-        .createUserWithEmailAndPassword(email, password)
+        .createUserWithEmailAndPassword(email, password)        
     } catch (error) {
-      return alert("Error al registrarse");
+      return null;
     }
   }
 
@@ -53,15 +53,15 @@ export class ServiceService {
     try {
       return this.afauth.sendPasswordResetEmail(email);
     } catch (error) {
-      return alert("Error al restablecer contraseña");
+      return null;
     }
   }
   async loginGoogle(email: string, password: string) {
     try {
       return await this.afauth
-        .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+        .signInWithPopup(new firebase.auth.GoogleAuthProvider())       
     } catch (error) {
-      return alert("Error al iniciar sesión con Google");
+      return null;
     }
   }
 

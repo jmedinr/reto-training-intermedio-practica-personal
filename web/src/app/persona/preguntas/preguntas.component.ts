@@ -28,14 +28,31 @@ export class PreguntasComponent implements OnInit {
   ngOnInit(): void {
     this.getQuestions();
     this.traerdatos();
+    this.getQuestionsAll();
+  }
+
+  getQuestionsAll(): void {
+    this.service.getQuestionAll().subscribe(value =>{
+      this.questions = value
+      this.totalQuestions = this.questions.length
+        this.pages = new Array(Math.ceil(this.totalQuestions / 10))
+
+  });
   }
 
   getQuestions(): void {
-      this.service.getQuestion().subscribe((data) => {
+    this.userLogged.subscribe(value =>{
+        this.uid=value?.uid
+    });
+    this.service.getPage(this.page).subscribe((data) => {
         this.questions = data;
-        this.totalQuestions = data.length;
-        this.pages = new Array(Math.ceil(this.totalQuestions / 10))
-      });
+    });
+    this.service
+      .getTotalPages()
+      .subscribe((data) => (this.pages = new Array(data)));
+    this.service
+      .getCountQuestions()
+      .subscribe((data) => (this.totalQuestions = data));
   }
 
   isLast(): boolean {

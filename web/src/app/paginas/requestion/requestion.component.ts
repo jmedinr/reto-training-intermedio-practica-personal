@@ -11,54 +11,63 @@ import { QuestionService } from 'src/app/Service/question.service';
 })
 export class RequestionComponent implements OnInit {
 
-  question:QuestionI | undefined;
+  question: QuestionI | undefined;
   answers: AnswerI[] | undefined;
-  answersNew: AnswerI[]=[];
-  currentAnswer:number=0;
+  answersNew: AnswerI[] = [];
+  currentAnswer: number = 0;
 
   questions: QuestionI[] | undefined;
+  estrellas: number = 0;
+  promedio: number = 0;
 
   page: number = 0;
 
   constructor(
-    private route:ActivatedRoute,
-    private questionService:QuestionService,
+    private route: ActivatedRoute,
+    private questionService: QuestionService,
     private service: QuestionService,
 
-    ) {
+  ) {
 
-    }
+  }
 
-  id:string | undefined;
+  id: string | undefined;
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.getQuestions();
+    this.getQuestions(`${id}`);
     this.get2();
 
   }
 
-  get2(){
+  get2() {
     let id = this.route.snapshot.paramMap.get('id');
 
 
     this.service.getAnswer(id).subscribe((data) => {
-          this.answers = data.answers;
+      this.answers = data.answers;
     });
   }
 
-  getQuestions():void{
-    this.questionService.getQuestion().subscribe(data=>{
-      this.questions = data;
-    })
-
+  getQuestions(id: string): void {
+    this.questionService.getQuestion(id).subscribe((data) => {
+      this.question = data;
+      this.answers = data.answers.sort((a, b) => {
+        return (a.position - b.position);
+      });
+      this.answers.map((respuesta) => {
+        console.log(respuesta.position);
+        this.estrellas += respuesta.position;
+        this.promedio = this.estrellas / data.answers.length;
+      });
+    });
   }
 
-  AddAnwsers(index:number) {
-    let last=this.currentAnswer+index;
-    for(let i = this.currentAnswer;i<last;i++){
+  AddAnwsers(index: number) {
+    let last = this.currentAnswer + index;
+    for (let i = this.currentAnswer; i < last; i++) {
     }
-    this.currentAnswer+=10;
+    this.currentAnswer += 10;
   }
 
   onScroll() {
