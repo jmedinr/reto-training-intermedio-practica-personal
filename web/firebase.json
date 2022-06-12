@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/reto_sofka",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

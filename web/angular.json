@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "eb8d0eea-1502-41b0-be4a-60593e5072dd"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -28,8 +31,8 @@
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeng/resources/themes/saga-blue/theme.css"
-              
-              
+
+
             ],
             "scripts": []
           },
@@ -91,7 +94,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-         
+
             "styles": [
               "src/styles.css"
             ],

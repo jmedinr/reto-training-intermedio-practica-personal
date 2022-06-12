@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  url: "https://questionsandanswerback.herokuapp.com/",
   firebaseConfig : {
     apiKey: "AIzaSyA4vxKfZCl1mLLZUvwPEat19Mq694GIW4U",
     authDomain: "sofkau-reto.firebaseapp.com",

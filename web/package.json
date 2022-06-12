@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "ng build --prod",
+    "prod": "ng build --prod --base-href=\"./\""
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,7 @@
     "@angular/core": "~13.3.0",
     "@angular/fire": "^7.3.0",
     "@angular/forms": "~13.3.0",
+    "@angular/localize": "^14.0.1",
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
@@ -28,6 +30,7 @@
     "@nebular/eva-icons": "9.0.2",
     "@nebular/theme": "^9.0.2",
     "@ng-bootstrap/ng-bootstrap": "^12.1.1",
+    "@popperjs/core": "^2.11.5",
     "eva-icons": "^1.1.2",
     "express": "^4.18.1",
     "firebase": "^9.8.1",
