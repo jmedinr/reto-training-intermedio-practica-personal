@@ -16,7 +16,7 @@ import { ServiceService } from 'src/app/Service/service.service';
 })
 export class AnswerComponent implements OnInit {
 
-  
+
   public form: FormGroup = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(10)]],
@@ -43,6 +43,14 @@ export class AnswerComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  onScrollDown() {
+    console.log("scrolled down!!");
+  }
+
+  onScrollUp() {
+    console.log("scrolled up!!");
+  }
+
   openVerticallyCentered(content: any) {
     this.modalService.open(content, { centered: true });
   }
@@ -57,12 +65,12 @@ export class AnswerComponent implements OnInit {
           this.messageService.add({
             severity: 'success',
             summary: 'Se ha agregado la respuesta',
-            
+
            });
            setTimeout(() => {
            window.location.reload();
          }, 1000);
-        }        
+        }
       },
       error: (e) =>
       this.messageService.add({

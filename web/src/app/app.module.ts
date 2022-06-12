@@ -22,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { RequestionComponent } from './paginas/requestion/requestion.component';
 import { EditComponent } from './paginas/edit/edit.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 
 
@@ -49,6 +50,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgbModule,
     FormsModule,
     NgxPaginationModule,
+    InfiniteScrollModule,
     ToastrModule.forRoot()
   ],
   providers: [HttpClientModule],

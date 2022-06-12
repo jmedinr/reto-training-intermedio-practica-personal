@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { QuestionI } from 'src/app/models/question-i';
 import { QuestionService } from 'src/app/Service/question.service';
 import { ServiceService } from 'src/app/Service/service.service';
@@ -12,6 +12,15 @@ export class PreguntasComponent implements OnInit {
   userLogged = this.authService.getUserLogged();
   uid: any;
 
+
+//scroll infinito
+  private linesToWrite: Array<string>;
+  private finishPage = 5;
+  private actualPage: number;
+  private showGoUpButton: boolean;
+  private showScrollHeight = 400;
+  private hideScrollHeight = 200;
+
   totalQuestions: number = 0;
 
   questions: any | undefined;
@@ -23,12 +32,24 @@ export class PreguntasComponent implements OnInit {
   constructor(
     private service: QuestionService,
     public authService: ServiceService
-  ) {}
+  ) {
+    this.actualPage = 1;
+    this.linesToWrite = new Array<string>();
+    this.showGoUpButton = false;
+  }
 
   ngOnInit(): void {
     this.getQuestions();
     this.traerdatos();
     this.getQuestionsAll();
+  }
+
+  onScrollDown() {
+    console.log("scrolled down!!");
+  }
+
+  onScrollUp() {
+    console.log("scrolled up!!");
   }
 
   getQuestionsAll(): void {
