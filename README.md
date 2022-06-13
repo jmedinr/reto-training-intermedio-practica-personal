@@ -5,7 +5,7 @@ Juan Diego Medina Rojas
 Juan Pablo Davila Bedoya
 
 # Mostrar preguntas.
-![1](https://user-images.githubusercontent.com/62685470/173394023-2f6f913d-061e-4b40-ae94-5f7b45a92c5e.png)
+![WhatsApp Image 2022-06-13 at 11 05 58 AM](https://user-images.githubusercontent.com/62685470/173396699-a9f8c4f1-5836-4ab4-b165-d5c0493dbf21.jpeg)
 
 # Paginador.
 ![4](https://user-images.githubusercontent.com/62685470/173394027-8640296f-45ef-4dbb-9185-26d88711858c.png)
