@@ -36,7 +36,7 @@ export class RequestionComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.getQuestions(`${id}`);
-    this.get2();
+    //this.get2();
 
   }
 

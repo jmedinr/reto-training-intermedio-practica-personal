@@ -1,25 +1,33 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { AnswerComponent } from "./answer.component";
+import { QuestionService  } from '../../Service/question.service';
 
-import { AnswerComponent } from './answer.component';
-
-describe('AnswerComponent', () => {
+describe("AnswerComponent", () => {
   let component: AnswerComponent;
   let fixture: ComponentFixture<AnswerComponent>;
+  let myService: QuestionService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AnswerComponent ]
-    })
-    .compileComponents();
+      declarations: [AnswerComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [{ provide: QuestionService, useValue: {} }],
+      imports: []
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AnswerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    myService = TestBed.inject(QuestionService);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('method1', () => {
+    it('should ...', () => {
+      expect(component).toBeTruthy();
+    });
   });
-});
+})

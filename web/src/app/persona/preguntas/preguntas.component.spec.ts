@@ -22,8 +22,4 @@ describe('PreguntasComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it("Total preguntas"), () => {
-    expect(component.totalQuestions).toBe(0);
-  }
 });
