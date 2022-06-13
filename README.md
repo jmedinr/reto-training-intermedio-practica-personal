@@ -36,3 +36,13 @@ Juan Pablo Davila Bedoya
 ![swagger2](https://user-images.githubusercontent.com/62685470/173396296-01fd3f0a-308f-4759-8ebc-49034127452f.png)
 ![swagger 3](https://user-images.githubusercontent.com/62685470/173396336-9399fe84-a28f-43db-9307-f89cb52d3a4f.png)
 
+# Tareas realizadas
+
+
+![contra](https://user-images.githubusercontent.com/62685470/173397732-658ff6b7-08fd-435f-ae96-b64c7790109e.png)
+ 
+![edit](https://user-images.githubusercontent.com/62685470/173397772-3d14e587-d44e-4359-b021-3ba4cf24acb1.png)
+![pag](https://user-images.githubusercontent.com/62685470/173397807-447ae4fa-2f6e-45a6-8284-2fe07caf9def.png)
+![swaggerrrr](https://user-images.githubusercontent.com/62685470/173397845-a0a5ffd6-36e8-464c-9fe2-a513ad5ef179.png)
+
+
