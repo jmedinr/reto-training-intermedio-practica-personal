@@ -1,6 +1,9 @@
 # reto-training-intermedio-practica-personal
 Práctica personal sobre mejoras en Angular
 
+Juan Diego Medina Rojas
+Juan Pablo Davila Bedoya
+
 # Mostrar preguntas.
 ![1](https://user-images.githubusercontent.com/62685470/173394023-2f6f913d-061e-4b40-ae94-5f7b45a92c5e.png)
 
@@ -27,3 +30,9 @@ Práctica personal sobre mejoras en Angular
 
 # Responer preguntas.
 ![tres](https://user-images.githubusercontent.com/62685470/173394178-08704435-a68e-482d-bebb-c70e41ba72dc.png)
+
+# Swagger UI
+![swagger](https://user-images.githubusercontent.com/62685470/173396196-1ea77320-3d83-476e-953f-9430b9a4aa39.png)
+![swagger2](https://user-images.githubusercontent.com/62685470/173396296-01fd3f0a-308f-4759-8ebc-49034127452f.png)
+![swagger 3](https://user-images.githubusercontent.com/62685470/173396336-9399fe84-a28f-43db-9307-f89cb52d3a4f.png)
+
