@@ -6,5 +6,5 @@ export interface answe {
      category:string;
      answers:[any];
      start:string;
+     email: string;
  }
- 

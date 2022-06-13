@@ -31,7 +31,8 @@ export class QuestionComponent implements OnInit {
     type: '',
     category: '',
     answers:[null],
-    start: '2'
+    start: '2',
+    email: this.authService.userData.email
   };
 
   constructor(
