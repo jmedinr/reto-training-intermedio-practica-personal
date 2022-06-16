@@ -38,7 +38,7 @@ Juan Pablo Davila Bedoya
 
 # Prueba Peticiones con Swagger
 
-https://www.canva.com/design/DAFDyGmSbgQ/f-5QKCP822IuHMONpuXOMA/edit?utm_content=DAFDyGmSbgQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+![Swagger](https://user-images.githubusercontent.com/59657015/174123828-ce03d843-6a1a-46f9-a065-4387aa3050cc.gif)
 
 # Tareas realizadas
 
