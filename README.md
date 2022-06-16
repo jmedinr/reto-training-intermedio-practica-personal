@@ -38,7 +38,7 @@ Juan Pablo Davila Bedoya
 
 # Prueba Peticiones con Swagger
 
-![swaggerrrr](https://user-images.githubusercontent.com/62685470/173397845-a0a5ffd6-36e8-464c-9fe2-a513ad5ef179.png)
+https://www.canva.com/design/DAFDyGmSbgQ/f-5QKCP822IuHMONpuXOMA/edit?utm_content=DAFDyGmSbgQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 # Tareas realizadas
 
@@ -47,6 +47,6 @@ Juan Pablo Davila Bedoya
  
 ![edit](https://user-images.githubusercontent.com/62685470/173397772-3d14e587-d44e-4359-b021-3ba4cf24acb1.png)
 ![pag](https://user-images.githubusercontent.com/62685470/173397807-447ae4fa-2f6e-45a6-8284-2fe07caf9def.png)
-
+![swaggerrrr](https://user-images.githubusercontent.com/62685470/173397845-a0a5ffd6-36e8-464c-9fe2-a513ad5ef179.png)
 
 
