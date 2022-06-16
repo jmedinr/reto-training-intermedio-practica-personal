@@ -36,6 +36,10 @@ Juan Pablo Davila Bedoya
 ![swagger2](https://user-images.githubusercontent.com/62685470/173396296-01fd3f0a-308f-4759-8ebc-49034127452f.png)
 ![swagger 3](https://user-images.githubusercontent.com/62685470/173396336-9399fe84-a28f-43db-9307-f89cb52d3a4f.png)
 
+# Prueba Peticiones con Swagger
+
+![Swagger ‑ Made with FlexClip](https://user-images.githubusercontent.com/59657015/174121392-b4aedd9c-0f39-4ad1-98d9-4b94c93574b3.gif)
+
 # Tareas realizadas
 
 
